@@ -1,6 +1,6 @@
 # immport-client
 
-> [ImmPort](https://www.immport.org/home) Python client generated via [OpenAPI Generator](https://openapi-generator.tech)
+> Unofficial [ImmPort](https://www.immport.org/home) Python client generated via [OpenAPI Generator](https://openapi-generator.tech)
 > Some patches for missspecifications have been manually applied to the [ImmPort API](https://immport.org/data/query/swagger-ui/index.html), when methods actually returned arrays instead of single objects.
 
 # Overview
@@ -217,6 +217,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [FileDetails](docs/FileDetails.md)
+ - [FileDownloadURL](docs/FileDownloadURL.md)
  - [FilterCriteriaFields](docs/FilterCriteriaFields.md)
  - [LkAdverseEventSeverity](docs/LkAdverseEventSeverity.md)
  - [LkAgeEvent](docs/LkAgeEvent.md)

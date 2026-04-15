@@ -5,6 +5,7 @@
 README.md
 docs/DownloadStudyFilesApi.md
 docs/FileDetails.md
+docs/FileDownloadURL.md
 docs/FilterCriteriaFields.md
 docs/LkAdverseEventSeverity.md
 docs/LkAgeEvent.md
@@ -109,6 +110,7 @@ immport_client/configuration.py
 immport_client/exceptions.py
 immport_client/models/__init__.py
 immport_client/models/file_details.py
+immport_client/models/file_download_url.py
 immport_client/models/filter_criteria_fields.py
 immport_client/models/lk_adverse_event_severity.py
 immport_client/models/lk_age_event.py

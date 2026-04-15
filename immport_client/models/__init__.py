@@ -15,6 +15,7 @@
 
 # import models into model package
 from immport_client.models.file_details import FileDetails
+from immport_client.models.file_download_url import FileDownloadURL
 from immport_client.models.filter_criteria_fields import FilterCriteriaFields
 from immport_client.models.lk_adverse_event_severity import LkAdverseEventSeverity
 from immport_client.models.lk_age_event import LkAgeEvent

@@ -18,6 +18,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
+from immport_client.models.file_download_url import FileDownloadURL
 
 from immport_client.api_client import ApiClient, RequestSerialized
 from immport_client.api_response import ApiResponse
@@ -54,7 +55,7 @@ class DownloadStudyFilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
+    ) -> FileDownloadURL:
         """Get download URL using DRS ID
 
         Returns a signed S3 URL or stream URL for the given DRS file UUID and access method.
@@ -98,7 +99,7 @@ class DownloadStudyFilesApi:
             '400': None,
             '500': None,
             '401': None,
-            '200': "str",
+            '200': "FileDownloadURL",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -129,7 +130,7 @@ class DownloadStudyFilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
+    ) -> ApiResponse[FileDownloadURL]:
         """Get download URL using DRS ID
 
         Returns a signed S3 URL or stream URL for the given DRS file UUID and access method.
@@ -173,7 +174,7 @@ class DownloadStudyFilesApi:
             '400': None,
             '500': None,
             '401': None,
-            '200': "str",
+            '200': "FileDownloadURL",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -248,7 +249,7 @@ class DownloadStudyFilesApi:
             '400': None,
             '500': None,
             '401': None,
-            '200': "str",
+            '200': "FileDownloadURL",
             '403': None,
         }
         response_data = self.api_client.call_api(

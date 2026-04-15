@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_url_from_drs**
-> str get_url_from_drs(file_uuid, access_method)
+> FileDownloadURL get_url_from_drs(file_uuid, access_method)
 
 Get download URL using DRS ID
 
@@ -20,6 +20,7 @@ Returns a signed S3 URL or stream URL for the given DRS file UUID and access met
 
 ```python
 import immport_client
+from immport_client.models.file_download_url import FileDownloadURL
 from immport_client.rest import ApiException
 from pprint import pprint
 
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**FileDownloadURL**](FileDownloadURL.md)
 
 ### Authorization
 

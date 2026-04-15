@@ -35,6 +35,7 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "FileDetails",
+    "FileDownloadURL",
     "FilterCriteriaFields",
     "LkAdverseEventSeverity",
     "LkAgeEvent",
@@ -142,6 +143,7 @@ from immport_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from immport_client.models.file_details import FileDetails as FileDetails
+from immport_client.models.file_download_url import FileDownloadURL as FileDownloadURL
 from immport_client.models.filter_criteria_fields import FilterCriteriaFields as FilterCriteriaFields
 from immport_client.models.lk_adverse_event_severity import LkAdverseEventSeverity as LkAdverseEventSeverity
 from immport_client.models.lk_age_event import LkAgeEvent as LkAgeEvent
