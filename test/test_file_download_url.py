@@ -38,7 +38,7 @@ class TestFileDownloadURL(unittest.TestCase):
             return FileDownloadURL(
                 message = '',
                 url = '',
-                status = None
+                status = 1.337
             )
         else:
             return FileDownloadURL(

@@ -114,6 +114,91 @@ class FilterCriteriaFields(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if clinical (nullable) is None
+        # and model_fields_set contains the field
+        if self.clinical is None and "clinical" in self.model_fields_set:
+            _dict['clinical'] = None
+
+        # set to None if max_subject_age (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_subject_age is None and "max_subject_age" in self.model_fields_set:
+            _dict['maxSubjectAge'] = None
+
+        # set to None if max_subject_age_gte (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_subject_age_gte is None and "max_subject_age_gte" in self.model_fields_set:
+            _dict['maxSubjectAgeGte'] = None
+
+        # set to None if max_subject_age_lte (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_subject_age_lte is None and "max_subject_age_lte" in self.model_fields_set:
+            _dict['maxSubjectAgeLte'] = None
+
+        # set to None if max_subject_age_gt (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_subject_age_gt is None and "max_subject_age_gt" in self.model_fields_set:
+            _dict['maxSubjectAgeGt'] = None
+
+        # set to None if max_subject_age_lt (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_subject_age_lt is None and "max_subject_age_lt" in self.model_fields_set:
+            _dict['maxSubjectAgeLt'] = None
+
+        # set to None if min_subject_age (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_subject_age is None and "min_subject_age" in self.model_fields_set:
+            _dict['minSubjectAge'] = None
+
+        # set to None if min_subject_age_gte (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_subject_age_gte is None and "min_subject_age_gte" in self.model_fields_set:
+            _dict['minSubjectAgeGte'] = None
+
+        # set to None if min_subject_age_lte (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_subject_age_lte is None and "min_subject_age_lte" in self.model_fields_set:
+            _dict['minSubjectAgeLte'] = None
+
+        # set to None if min_subject_age_gt (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_subject_age_gt is None and "min_subject_age_gt" in self.model_fields_set:
+            _dict['minSubjectAgeGt'] = None
+
+        # set to None if min_subject_age_lt (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_subject_age_lt is None and "min_subject_age_lt" in self.model_fields_set:
+            _dict['minSubjectAgeLt'] = None
+
+        # set to None if study_time_collected (nullable) is None
+        # and model_fields_set contains the field
+        if self.study_time_collected is None and "study_time_collected" in self.model_fields_set:
+            _dict['studyTimeCollected'] = None
+
+        # set to None if study_time_collected_gte (nullable) is None
+        # and model_fields_set contains the field
+        if self.study_time_collected_gte is None and "study_time_collected_gte" in self.model_fields_set:
+            _dict['studyTimeCollectedGte'] = None
+
+        # set to None if study_time_collected_lte (nullable) is None
+        # and model_fields_set contains the field
+        if self.study_time_collected_lte is None and "study_time_collected_lte" in self.model_fields_set:
+            _dict['studyTimeCollectedLte'] = None
+
+        # set to None if study_time_collected_gt (nullable) is None
+        # and model_fields_set contains the field
+        if self.study_time_collected_gt is None and "study_time_collected_gt" in self.model_fields_set:
+            _dict['studyTimeCollectedGt'] = None
+
+        # set to None if study_time_collected_lt (nullable) is None
+        # and model_fields_set contains the field
+        if self.study_time_collected_lt is None and "study_time_collected_lt" in self.model_fields_set:
+            _dict['studyTimeCollectedLt'] = None
+
+        # set to None if format (nullable) is None
+        # and model_fields_set contains the field
+        if self.format is None and "format" in self.model_fields_set:
+            _dict['format'] = None
+
         return _dict
 
     @classmethod

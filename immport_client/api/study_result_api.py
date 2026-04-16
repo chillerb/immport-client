@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from typing import List
-from immport_client.models.filter_criteria_fields import FilterCriteriaFields
+from pydantic import StrictFloat, StrictInt, StrictStr
+from typing import List, Optional, Union
 from immport_client.models.mass_spectrometry_result import MassSpectrometryResult
 from immport_client.models.v_elisa_result import VElisaResult
 from immport_client.models.v_elispot_result import VElispotResult
@@ -51,7 +51,51 @@ class StudyResultApi:
     @validate_call
     def get_elisa_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +113,96 @@ class StudyResultApi:
 
         Returns ELISA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +226,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elisa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -119,7 +295,51 @@ class StudyResultApi:
     @validate_call
     def get_elisa_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,8 +357,96 @@ class StudyResultApi:
 
         Returns ELISA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +470,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elisa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -187,7 +539,51 @@ class StudyResultApi:
     @validate_call
     def get_elisa_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +601,96 @@ class StudyResultApi:
 
         Returns ELISA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +714,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elisa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -250,7 +778,51 @@ class StudyResultApi:
 
     def _get_elisa_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -260,6 +832,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -273,9 +873,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -318,7 +1094,51 @@ class StudyResultApi:
     @validate_call
     def get_elispot_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -336,8 +1156,96 @@ class StudyResultApi:
 
         Returns Elispot results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -361,7 +1269,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elispot_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -386,7 +1338,51 @@ class StudyResultApi:
     @validate_call
     def get_elispot_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -404,8 +1400,96 @@ class StudyResultApi:
 
         Returns Elispot results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -429,7 +1513,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elispot_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -454,7 +1582,51 @@ class StudyResultApi:
     @validate_call
     def get_elispot_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -472,8 +1644,96 @@ class StudyResultApi:
 
         Returns Elispot results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -497,7 +1757,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_elispot_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -517,7 +1821,51 @@ class StudyResultApi:
 
     def _get_elispot_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -527,6 +1875,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -540,9 +1916,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -585,7 +2137,51 @@ class StudyResultApi:
     @validate_call
     def get_fcs_analyzed_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -603,8 +2199,96 @@ class StudyResultApi:
 
         Returns FcsAnalyzed results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -628,7 +2312,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_fcs_analyzed_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -653,7 +2381,51 @@ class StudyResultApi:
     @validate_call
     def get_fcs_analyzed_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -671,8 +2443,96 @@ class StudyResultApi:
 
         Returns FcsAnalyzed results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -696,7 +2556,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_fcs_analyzed_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -721,7 +2625,51 @@ class StudyResultApi:
     @validate_call
     def get_fcs_analyzed_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -739,8 +2687,96 @@ class StudyResultApi:
 
         Returns FcsAnalyzed results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -764,7 +2800,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_fcs_analyzed_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -784,7 +2864,51 @@ class StudyResultApi:
 
     def _get_fcs_analyzed_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -794,6 +2918,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -807,9 +2959,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -852,7 +3180,51 @@ class StudyResultApi:
     @validate_call
     def get_file_path(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -870,8 +3242,96 @@ class StudyResultApi:
 
         Returns File Paths based on filter criteria These paths represent file locations within the ImmPort SharedData File system. Review the File Download tutorial to see how to use these Paths to retrieve the file.
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -895,7 +3355,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_file_path_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -920,7 +3424,51 @@ class StudyResultApi:
     @validate_call
     def get_file_path_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -938,8 +3486,96 @@ class StudyResultApi:
 
         Returns File Paths based on filter criteria These paths represent file locations within the ImmPort SharedData File system. Review the File Download tutorial to see how to use these Paths to retrieve the file.
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -963,7 +3599,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_file_path_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -988,7 +3668,51 @@ class StudyResultApi:
     @validate_call
     def get_file_path_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1006,8 +3730,96 @@ class StudyResultApi:
 
         Returns File Paths based on filter criteria These paths represent file locations within the ImmPort SharedData File system. Review the File Download tutorial to see how to use these Paths to retrieve the file.
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1031,7 +3843,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_file_path_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1051,7 +3907,51 @@ class StudyResultApi:
 
     def _get_file_path_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -1061,6 +3961,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1074,9 +4002,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -1119,7 +4223,51 @@ class StudyResultApi:
     @validate_call
     def get_hai_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1137,8 +4285,96 @@ class StudyResultApi:
 
         Returns HAI results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1162,7 +4398,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hai_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1187,7 +4467,51 @@ class StudyResultApi:
     @validate_call
     def get_hai_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1205,8 +4529,96 @@ class StudyResultApi:
 
         Returns HAI results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1230,7 +4642,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hai_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1255,7 +4711,51 @@ class StudyResultApi:
     @validate_call
     def get_hai_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1273,8 +4773,96 @@ class StudyResultApi:
 
         Returns HAI results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1298,7 +4886,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hai_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1318,7 +4950,51 @@ class StudyResultApi:
 
     def _get_hai_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -1328,6 +5004,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1341,9 +5045,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -1386,7 +5266,51 @@ class StudyResultApi:
     @validate_call
     def get_hla_typing_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1404,8 +5328,96 @@ class StudyResultApi:
 
         Returns HLA Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1429,7 +5441,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hla_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1454,7 +5510,51 @@ class StudyResultApi:
     @validate_call
     def get_hla_typing_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1472,8 +5572,96 @@ class StudyResultApi:
 
         Returns HLA Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1497,7 +5685,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hla_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1522,7 +5754,51 @@ class StudyResultApi:
     @validate_call
     def get_hla_typing_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1540,8 +5816,96 @@ class StudyResultApi:
 
         Returns HLA Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1565,7 +5929,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_hla_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1585,7 +5993,51 @@ class StudyResultApi:
 
     def _get_hla_typing_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -1595,6 +6047,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1608,9 +6088,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -1653,7 +6309,51 @@ class StudyResultApi:
     @validate_call
     def get_kir_typing_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1671,8 +6371,96 @@ class StudyResultApi:
 
         Returns KIR Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1696,7 +6484,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_kir_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1721,7 +6553,51 @@ class StudyResultApi:
     @validate_call
     def get_kir_typing_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1739,8 +6615,96 @@ class StudyResultApi:
 
         Returns KIR Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1764,7 +6728,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_kir_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1789,7 +6797,51 @@ class StudyResultApi:
     @validate_call
     def get_kir_typing_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1807,8 +6859,96 @@ class StudyResultApi:
 
         Returns KIR Typing results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1832,7 +6972,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_kir_typing_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1852,7 +7036,51 @@ class StudyResultApi:
 
     def _get_kir_typing_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -1862,6 +7090,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1875,9 +7131,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -1920,7 +7352,51 @@ class StudyResultApi:
     @validate_call
     def get_mass_spectrometry_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1938,8 +7414,96 @@ class StudyResultApi:
 
         Returns Mass Spectrometry results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1963,7 +7527,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mass_spectrometry_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,7 +7596,51 @@ class StudyResultApi:
     @validate_call
     def get_mass_spectrometry_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2006,8 +7658,96 @@ class StudyResultApi:
 
         Returns Mass Spectrometry results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2031,7 +7771,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mass_spectrometry_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2056,7 +7840,51 @@ class StudyResultApi:
     @validate_call
     def get_mass_spectrometry_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2074,8 +7902,96 @@ class StudyResultApi:
 
         Returns Mass Spectrometry results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2099,7 +8015,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mass_spectrometry_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2119,7 +8079,51 @@ class StudyResultApi:
 
     def _get_mass_spectrometry_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -2129,6 +8133,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2142,9 +8174,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -2187,7 +8395,51 @@ class StudyResultApi:
     @validate_call
     def get_mbaa_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2205,8 +8457,96 @@ class StudyResultApi:
 
         Returns MBAA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2230,7 +8570,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mbaa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2255,7 +8639,51 @@ class StudyResultApi:
     @validate_call
     def get_mbaa_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2273,8 +8701,96 @@ class StudyResultApi:
 
         Returns MBAA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2298,7 +8814,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mbaa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2323,7 +8883,51 @@ class StudyResultApi:
     @validate_call
     def get_mbaa_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2341,8 +8945,96 @@ class StudyResultApi:
 
         Returns MBAA results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2366,7 +9058,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_mbaa_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2386,7 +9122,51 @@ class StudyResultApi:
 
     def _get_mbaa_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -2396,6 +9176,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2409,9 +9217,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -2454,7 +9438,51 @@ class StudyResultApi:
     @validate_call
     def get_neut_ab_titer_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2472,8 +9500,96 @@ class StudyResultApi:
 
         Returns Neutralizing Antibody Titer results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2497,7 +9613,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_neut_ab_titer_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2522,7 +9682,51 @@ class StudyResultApi:
     @validate_call
     def get_neut_ab_titer_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2540,8 +9744,96 @@ class StudyResultApi:
 
         Returns Neutralizing Antibody Titer results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2565,7 +9857,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_neut_ab_titer_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2590,7 +9926,51 @@ class StudyResultApi:
     @validate_call
     def get_neut_ab_titer_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2608,8 +9988,96 @@ class StudyResultApi:
 
         Returns Neutralizing Antibody Titer results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2633,7 +10101,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_neut_ab_titer_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2653,7 +10165,51 @@ class StudyResultApi:
 
     def _get_neut_ab_titer_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -2663,6 +10219,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2676,9 +10260,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
@@ -2721,7 +10481,51 @@ class StudyResultApi:
     @validate_call
     def get_pcr_result(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2739,8 +10543,96 @@ class StudyResultApi:
 
         Returns PCR results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2764,7 +10656,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_pcr_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2789,7 +10725,51 @@ class StudyResultApi:
     @validate_call
     def get_pcr_result_with_http_info(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2807,8 +10787,96 @@ class StudyResultApi:
 
         Returns PCR results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2832,7 +10900,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_pcr_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2857,7 +10969,51 @@ class StudyResultApi:
     @validate_call
     def get_pcr_result_without_preload_content(
         self,
-        filter_criteria_fields: FilterCriteriaFields,
+        age_event: Optional[List[StrictStr]] = None,
+        age_event_specify: Optional[List[StrictStr]] = None,
+        age_unit: Optional[List[StrictStr]] = None,
+        ancestral_population: Optional[List[StrictStr]] = None,
+        arm_accession: Optional[List[StrictStr]] = None,
+        arm_name: Optional[List[StrictStr]] = None,
+        biosample_accession: Optional[List[StrictStr]] = None,
+        biosample_subtype: Optional[List[StrictStr]] = None,
+        biosample_type: Optional[List[StrictStr]] = None,
+        clinical: Optional[StrictStr] = None,
+        ethnicity: Optional[List[StrictStr]] = None,
+        experiment_accession: Optional[List[StrictStr]] = None,
+        expsample_accession: Optional[List[StrictStr]] = None,
+        gender: Optional[List[StrictStr]] = None,
+        sex: Optional[List[StrictStr]] = None,
+        max_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        max_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        min_subject_age_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        measurement_technique: Optional[List[StrictStr]] = None,
+        planned_visit_accession: Optional[List[StrictStr]] = None,
+        race: Optional[List[StrictStr]] = None,
+        race_specify: Optional[List[StrictStr]] = None,
+        species: Optional[List[StrictStr]] = None,
+        strain: Optional[List[StrictStr]] = None,
+        study_accession: Optional[List[StrictStr]] = None,
+        study_time_collected: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lte: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_gt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_lt: Optional[Union[StrictFloat, StrictInt]] = None,
+        study_time_collected_unit: Optional[List[StrictStr]] = None,
+        study_time_t0_event: Optional[List[StrictStr]] = None,
+        study_time_t0_event_specify: Optional[List[StrictStr]] = None,
+        subject_accession: Optional[List[StrictStr]] = None,
+        study_title: Optional[List[StrictStr]] = None,
+        subject_phenotype: Optional[List[StrictStr]] = None,
+        treatment_accession: Optional[List[StrictStr]] = None,
+        format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2875,8 +11031,96 @@ class StudyResultApi:
 
         Returns PCR results based on filter criteria
 
-        :param filter_criteria_fields: (required)
-        :type filter_criteria_fields: FilterCriteriaFields
+        :param age_event:
+        :type age_event: List[str]
+        :param age_event_specify:
+        :type age_event_specify: List[str]
+        :param age_unit:
+        :type age_unit: List[str]
+        :param ancestral_population:
+        :type ancestral_population: List[str]
+        :param arm_accession:
+        :type arm_accession: List[str]
+        :param arm_name:
+        :type arm_name: List[str]
+        :param biosample_accession:
+        :type biosample_accession: List[str]
+        :param biosample_subtype:
+        :type biosample_subtype: List[str]
+        :param biosample_type:
+        :type biosample_type: List[str]
+        :param clinical:
+        :type clinical: str
+        :param ethnicity:
+        :type ethnicity: List[str]
+        :param experiment_accession:
+        :type experiment_accession: List[str]
+        :param expsample_accession:
+        :type expsample_accession: List[str]
+        :param gender:
+        :type gender: List[str]
+        :param sex:
+        :type sex: List[str]
+        :param max_subject_age:
+        :type max_subject_age: float
+        :param max_subject_age_gte:
+        :type max_subject_age_gte: float
+        :param max_subject_age_lte:
+        :type max_subject_age_lte: float
+        :param max_subject_age_gt:
+        :type max_subject_age_gt: float
+        :param max_subject_age_lt:
+        :type max_subject_age_lt: float
+        :param min_subject_age:
+        :type min_subject_age: float
+        :param min_subject_age_gte:
+        :type min_subject_age_gte: float
+        :param min_subject_age_lte:
+        :type min_subject_age_lte: float
+        :param min_subject_age_gt:
+        :type min_subject_age_gt: float
+        :param min_subject_age_lt:
+        :type min_subject_age_lt: float
+        :param measurement_technique:
+        :type measurement_technique: List[str]
+        :param planned_visit_accession:
+        :type planned_visit_accession: List[str]
+        :param race:
+        :type race: List[str]
+        :param race_specify:
+        :type race_specify: List[str]
+        :param species:
+        :type species: List[str]
+        :param strain:
+        :type strain: List[str]
+        :param study_accession:
+        :type study_accession: List[str]
+        :param study_time_collected:
+        :type study_time_collected: float
+        :param study_time_collected_gte:
+        :type study_time_collected_gte: float
+        :param study_time_collected_lte:
+        :type study_time_collected_lte: float
+        :param study_time_collected_gt:
+        :type study_time_collected_gt: float
+        :param study_time_collected_lt:
+        :type study_time_collected_lt: float
+        :param study_time_collected_unit:
+        :type study_time_collected_unit: List[str]
+        :param study_time_t0_event:
+        :type study_time_t0_event: List[str]
+        :param study_time_t0_event_specify:
+        :type study_time_t0_event_specify: List[str]
+        :param subject_accession:
+        :type subject_accession: List[str]
+        :param study_title:
+        :type study_title: List[str]
+        :param subject_phenotype:
+        :type subject_phenotype: List[str]
+        :param treatment_accession:
+        :type treatment_accession: List[str]
+        :param format:
+        :type format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2900,7 +11144,51 @@ class StudyResultApi:
         """ # noqa: E501
 
         _param = self._get_pcr_result_serialize(
-            filter_criteria_fields=filter_criteria_fields,
+            age_event=age_event,
+            age_event_specify=age_event_specify,
+            age_unit=age_unit,
+            ancestral_population=ancestral_population,
+            arm_accession=arm_accession,
+            arm_name=arm_name,
+            biosample_accession=biosample_accession,
+            biosample_subtype=biosample_subtype,
+            biosample_type=biosample_type,
+            clinical=clinical,
+            ethnicity=ethnicity,
+            experiment_accession=experiment_accession,
+            expsample_accession=expsample_accession,
+            gender=gender,
+            sex=sex,
+            max_subject_age=max_subject_age,
+            max_subject_age_gte=max_subject_age_gte,
+            max_subject_age_lte=max_subject_age_lte,
+            max_subject_age_gt=max_subject_age_gt,
+            max_subject_age_lt=max_subject_age_lt,
+            min_subject_age=min_subject_age,
+            min_subject_age_gte=min_subject_age_gte,
+            min_subject_age_lte=min_subject_age_lte,
+            min_subject_age_gt=min_subject_age_gt,
+            min_subject_age_lt=min_subject_age_lt,
+            measurement_technique=measurement_technique,
+            planned_visit_accession=planned_visit_accession,
+            race=race,
+            race_specify=race_specify,
+            species=species,
+            strain=strain,
+            study_accession=study_accession,
+            study_time_collected=study_time_collected,
+            study_time_collected_gte=study_time_collected_gte,
+            study_time_collected_lte=study_time_collected_lte,
+            study_time_collected_gt=study_time_collected_gt,
+            study_time_collected_lt=study_time_collected_lt,
+            study_time_collected_unit=study_time_collected_unit,
+            study_time_t0_event=study_time_t0_event,
+            study_time_t0_event_specify=study_time_t0_event_specify,
+            subject_accession=subject_accession,
+            study_title=study_title,
+            subject_phenotype=subject_phenotype,
+            treatment_accession=treatment_accession,
+            format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2920,7 +11208,51 @@ class StudyResultApi:
 
     def _get_pcr_result_serialize(
         self,
-        filter_criteria_fields,
+        age_event,
+        age_event_specify,
+        age_unit,
+        ancestral_population,
+        arm_accession,
+        arm_name,
+        biosample_accession,
+        biosample_subtype,
+        biosample_type,
+        clinical,
+        ethnicity,
+        experiment_accession,
+        expsample_accession,
+        gender,
+        sex,
+        max_subject_age,
+        max_subject_age_gte,
+        max_subject_age_lte,
+        max_subject_age_gt,
+        max_subject_age_lt,
+        min_subject_age,
+        min_subject_age_gte,
+        min_subject_age_lte,
+        min_subject_age_gt,
+        min_subject_age_lt,
+        measurement_technique,
+        planned_visit_accession,
+        race,
+        race_specify,
+        species,
+        strain,
+        study_accession,
+        study_time_collected,
+        study_time_collected_gte,
+        study_time_collected_lte,
+        study_time_collected_gt,
+        study_time_collected_lt,
+        study_time_collected_unit,
+        study_time_t0_event,
+        study_time_t0_event_specify,
+        subject_accession,
+        study_title,
+        subject_phenotype,
+        treatment_accession,
+        format,
         _request_auth,
         _content_type,
         _headers,
@@ -2930,6 +11262,34 @@ class StudyResultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'ageEvent': 'multi',
+            'ageEventSpecify': 'multi',
+            'ageUnit': 'multi',
+            'ancestralPopulation': 'multi',
+            'armAccession': 'multi',
+            'armName': 'multi',
+            'biosampleAccession': 'multi',
+            'biosampleSubtype': 'multi',
+            'biosampleType': 'multi',
+            'ethnicity': 'multi',
+            'experimentAccession': 'multi',
+            'expsampleAccession': 'multi',
+            'gender': 'multi',
+            'sex': 'multi',
+            'measurementTechnique': 'multi',
+            'plannedVisitAccession': 'multi',
+            'race': 'multi',
+            'raceSpecify': 'multi',
+            'species': 'multi',
+            'strain': 'multi',
+            'studyAccession': 'multi',
+            'studyTimeCollectedUnit': 'multi',
+            'studyTimeT0Event': 'multi',
+            'studyTimeT0EventSpecify': 'multi',
+            'subjectAccession': 'multi',
+            'studyTitle': 'multi',
+            'subjectPhenotype': 'multi',
+            'treatmentAccession': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2943,9 +11303,185 @@ class StudyResultApi:
 
         # process the path parameters
         # process the query parameters
-        if filter_criteria_fields is not None:
+        if age_event is not None:
             
-            _query_params.append(('filterCriteriaFields', filter_criteria_fields))
+            _query_params.append(('ageEvent', age_event))
+            
+        if age_event_specify is not None:
+            
+            _query_params.append(('ageEventSpecify', age_event_specify))
+            
+        if age_unit is not None:
+            
+            _query_params.append(('ageUnit', age_unit))
+            
+        if ancestral_population is not None:
+            
+            _query_params.append(('ancestralPopulation', ancestral_population))
+            
+        if arm_accession is not None:
+            
+            _query_params.append(('armAccession', arm_accession))
+            
+        if arm_name is not None:
+            
+            _query_params.append(('armName', arm_name))
+            
+        if biosample_accession is not None:
+            
+            _query_params.append(('biosampleAccession', biosample_accession))
+            
+        if biosample_subtype is not None:
+            
+            _query_params.append(('biosampleSubtype', biosample_subtype))
+            
+        if biosample_type is not None:
+            
+            _query_params.append(('biosampleType', biosample_type))
+            
+        if clinical is not None:
+            
+            _query_params.append(('clinical', clinical))
+            
+        if ethnicity is not None:
+            
+            _query_params.append(('ethnicity', ethnicity))
+            
+        if experiment_accession is not None:
+            
+            _query_params.append(('experimentAccession', experiment_accession))
+            
+        if expsample_accession is not None:
+            
+            _query_params.append(('expsampleAccession', expsample_accession))
+            
+        if gender is not None:
+            
+            _query_params.append(('gender', gender))
+            
+        if sex is not None:
+            
+            _query_params.append(('sex', sex))
+            
+        if max_subject_age is not None:
+            
+            _query_params.append(('maxSubjectAge', max_subject_age))
+            
+        if max_subject_age_gte is not None:
+            
+            _query_params.append(('maxSubjectAgeGte', max_subject_age_gte))
+            
+        if max_subject_age_lte is not None:
+            
+            _query_params.append(('maxSubjectAgeLte', max_subject_age_lte))
+            
+        if max_subject_age_gt is not None:
+            
+            _query_params.append(('maxSubjectAgeGt', max_subject_age_gt))
+            
+        if max_subject_age_lt is not None:
+            
+            _query_params.append(('maxSubjectAgeLt', max_subject_age_lt))
+            
+        if min_subject_age is not None:
+            
+            _query_params.append(('minSubjectAge', min_subject_age))
+            
+        if min_subject_age_gte is not None:
+            
+            _query_params.append(('minSubjectAgeGte', min_subject_age_gte))
+            
+        if min_subject_age_lte is not None:
+            
+            _query_params.append(('minSubjectAgeLte', min_subject_age_lte))
+            
+        if min_subject_age_gt is not None:
+            
+            _query_params.append(('minSubjectAgeGt', min_subject_age_gt))
+            
+        if min_subject_age_lt is not None:
+            
+            _query_params.append(('minSubjectAgeLt', min_subject_age_lt))
+            
+        if measurement_technique is not None:
+            
+            _query_params.append(('measurementTechnique', measurement_technique))
+            
+        if planned_visit_accession is not None:
+            
+            _query_params.append(('plannedVisitAccession', planned_visit_accession))
+            
+        if race is not None:
+            
+            _query_params.append(('race', race))
+            
+        if race_specify is not None:
+            
+            _query_params.append(('raceSpecify', race_specify))
+            
+        if species is not None:
+            
+            _query_params.append(('species', species))
+            
+        if strain is not None:
+            
+            _query_params.append(('strain', strain))
+            
+        if study_accession is not None:
+            
+            _query_params.append(('studyAccession', study_accession))
+            
+        if study_time_collected is not None:
+            
+            _query_params.append(('studyTimeCollected', study_time_collected))
+            
+        if study_time_collected_gte is not None:
+            
+            _query_params.append(('studyTimeCollectedGte', study_time_collected_gte))
+            
+        if study_time_collected_lte is not None:
+            
+            _query_params.append(('studyTimeCollectedLte', study_time_collected_lte))
+            
+        if study_time_collected_gt is not None:
+            
+            _query_params.append(('studyTimeCollectedGt', study_time_collected_gt))
+            
+        if study_time_collected_lt is not None:
+            
+            _query_params.append(('studyTimeCollectedLt', study_time_collected_lt))
+            
+        if study_time_collected_unit is not None:
+            
+            _query_params.append(('studyTimeCollectedUnit', study_time_collected_unit))
+            
+        if study_time_t0_event is not None:
+            
+            _query_params.append(('studyTimeT0Event', study_time_t0_event))
+            
+        if study_time_t0_event_specify is not None:
+            
+            _query_params.append(('studyTimeT0EventSpecify', study_time_t0_event_specify))
+            
+        if subject_accession is not None:
+            
+            _query_params.append(('subjectAccession', subject_accession))
+            
+        if study_title is not None:
+            
+            _query_params.append(('studyTitle', study_title))
+            
+        if subject_phenotype is not None:
+            
+            _query_params.append(('subjectPhenotype', subject_phenotype))
+            
+        if treatment_accession is not None:
+            
+            _query_params.append(('treatmentAccession', treatment_accession))
+            
+        if format is not None:
+            
+            _query_params.append(('format', format))
             
         # process the header parameters
         # process the form parameters
